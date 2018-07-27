@@ -1,0 +1,64 @@
+<ion-menu [content]="content">
+    <ion-header>   
+        <ion-thumbnail style="margin-top: 20px;">
+        <img src="../assets/images/logo/GRADIENT LOGO.png">
+      </ion-thumbnail>
+      
+        <!-- first style utk color below text sign in  -->
+       <ion-row style="background:#000000;color: #000000;height: 29px;margin-top: -26px;margin-left: -30px;padding-bottom: -40px;">
+          <ion-card style="font-weight: bold;background: transparent; margin-top: -6px; padding: 0px;box-shadow: none">
+              <!-- <ion-card-content  style="font-size:15px !important;font-weight: 400;margin-top: -25px;"   >
+                  <ion-row>
+                      <ion-col>
+                          <a style="font-size: 20px;  padding-left: 10%;color:white"  (click)="login()"  clear menuToggle > <b>Sign In</b></a>
+                      </ion-col>
+                      <ion-col>
+                          <div class="verticalLine"></div>
+                          </ion-col>
+                          <ion-col>
+                             <a style="font-size: 20px;  color:white; margin-left:-80%;" (click)="signup()"  clear menuToggle > <b>Register</b></a>   
+                          </ion-col>             
+                  </ion-row>
+              </ion-card-content> -->
+          </ion-card> 
+      </ion-row>
+
+     
+        <ion-item-divider color="dark">Account</ion-item-divider>
+
+      <ion-item (click)="openPage('SignupPage')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="md-clipboard" item-left large></ion-icon>
+        <h2>Sign Up</h2>
+        <p>For a new account</p>
+      </ion-item>
+
+      <ion-item (click)="openPage('LoginPage')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="log-in" item-left large></ion-icon>
+        <h2>Login</h2>
+        <p>Using email and password</p>
+      </ion-item>
+
+      <ion-item *ngIf="loggedIn" menuClose>
+        <ion-icon name="contact" item-left large></ion-icon>
+        <h2>{{ (this.user.firstname == '' ? this.user.username : this.user.firstname) || "" }}</h2>
+        <p>Welcome</p>
+    </ion-item>
+
+        <ion-item *ngIf="loggedIn" (click)="openPage('cartPage')" menuClose>
+            <ion-icon name="cart" item-left large></ion-icon>
+            <h2>Your Cart</h2>
+            <p>Check items in your cart</p>
+          </ion-item>
+    
+          <ion-item *ngIf="loggedIn" (click)="openPage('logout')" menuClose>
+            <ion-icon name="log-out" item-left large></ion-icon>
+            <h2>Logout</h2>
+            <p>of your Account</p>
+          </ion-item>
+    
+     
+
+
+  </ion-header>
+</ion-menu>
+<ion-nav #content [root]="homePage"></ion-nav>

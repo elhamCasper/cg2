@@ -1,0 +1,8 @@
+{
+  "name": "CGVER1",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "app_id": ""
+}

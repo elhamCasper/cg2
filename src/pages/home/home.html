@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!-- <ion-title>Home</ion-title> -->
+  </ion-navbar>
+
+<ion-toolbar color="dark">
+  <ion-searchbar [(ngModel)]="searchQuery" (search)="onSearch($event)"></ion-searchbar>
+</ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-card>
+    <ion-slides loop="true" autoplay="3000" pager>
+      <ion-slide *ngFor="let number of [1,2,3,4,5]">
+          <img src="../../assets/images/{{number}}.png" />
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <ion-list>
+    <ion-item-divider color="dark">Categories</ion-item-divider>
+            <ion-row style="padding: 0px;">
+            <ion-col col-4 style="padding: 0px;" [ngClass]="animateClass" *ngFor="let category  of categories">
+            <ion-card style="margin: 1px 1px 1px 1px;  width: calc(99%); box-shadow: none; background-color:#fffafa"  text-wrap (click)="openCategoryPage(category)" menuClose>
+                <!-- <ion-icon [name]="category.icon" item-left large></ion-icon> -->
+                <img src="{{ category.image }}" alt="" class="src">
+                <p style="margin-top: -2px;color: rgb(20, 19, 19);    text-align: center;"> {{ category.name }} <p>
+                <!-- <p> {{ category.description }}</p> -->
+              
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+</ion-content> 
+
+
